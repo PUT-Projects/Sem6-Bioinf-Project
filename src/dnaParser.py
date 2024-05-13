@@ -11,6 +11,30 @@ import xml.etree.ElementTree as ET
 
 import requests
 
+
+class Cell:
+    def __init__(self, posL, posH, sequence):
+        self.__posL = posL
+        self.__posH = posH
+        self.__sequence = sequence
+
+    def __str__(self) -> str:
+        return f"({self.__posL}, {self.__posH}, {self.__sequence})"
+
+    def __repr__(self) -> str:
+        return f"Cell({self.__posL}, {self.__posH}, {self.__sequence})"
+
+# Getters
+    def getPosL(self) -> int:
+        return self.__posL
+
+    def getPosH(self) -> int:
+        return self.__posH
+
+    def getSequence(self) -> str:
+        return self.__sequence
+
+
 # The `Probe` class has attributes for pattern and cells, with methods to retrieve the probe, pattern,
 # and cells.
 class Probe:
@@ -19,34 +43,11 @@ class Probe:
         self.__cells = cells
 
 # Getters
-    def getProbe(self):
-        # The `return self` statement in the methods of the classes (`Probe`, `Cell`, and `DNA`) is
-        # used to return the instance of the class itself.
-        return self
-
-    def getPattern(self):
+    def getPattern(self) -> str:
         return self.__pattern
 
-    def getCells(self):
+    def getCells(self) -> list[Cell]:
         return self.__cells
-
-
-class Cell:
-    def __init__(self, posL, posH, sequence):
-        self.__posL = posL
-        self.__posH = posH
-        self.__sequence = sequence
-
-# Getters
-    def getCell(self):
-        return self
-    def getPosL(self):
-        return self.__posL
-    def getPosH(self):
-        return self.__posH
-    def getSequence(self):
-        return self.__sequence
-
 
 class DNA:
     def __init__(self, key=None, length=None, start=None, probes=None):
@@ -87,29 +88,29 @@ class DNA:
 
 
 # Getters
-    def getDNA(self):
-        return self
-
-    def getKey(self):
+    def getKey(self) -> str:
         return self.__key
 
-    def getLength(self):
+    def getLength(self) -> int:
         return self.__length
 
-    def getStart(self):
+    def getStart(self) -> str:
         return self.__start
 
+    def getProbes(self) -> list[Probe]:
+        return self.__probes
 
+    def getProbe(self, index) -> Probe:
+        return self.__probes[index]
 
-
-    def loadFile(self, inputFile):
+    def loadFile(self, inputFile) -> None:
     #load xml file as string
         with open(inputFile, 'r') as file:
             data = file.read()
         self.loadXML(data)
 
 
-    def printDNA(self):
+    def printDNA(self) -> None:
         print("Key: ", self.getKey())
         print("Length: ", self.getLength())
         print("Start: ", self.getStart())
