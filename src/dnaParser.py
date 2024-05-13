@@ -85,22 +85,6 @@ class DNA:
             self.__probes.append(Probe(pattern, cells))
         return self
 
-    def loadFile(self, inputFile):
-    #load xml file as string
-        with open(inputFile, 'r') as file:
-            data = file.read()
-        self.loadXML(data)
-
-
-    def printDNA(self):
-        print("Key: ", self.key)
-        print("Length: ", self.length)
-        print("Start: ", self.start)
-        for probe in self.probes:
-            print("Pattern: ", probe.pattern)
-            for cell in probe.cells:
-                print("PosL: ", cell.posL, " PosH: ", cell.posH, " Sequence: ", cell.sequence)
-
 
 # Getters
     def getDNA(self):
@@ -114,6 +98,26 @@ class DNA:
 
     def getStart(self):
         return self.__start
+
+
+
+
+    def loadFile(self, inputFile):
+    #load xml file as string
+        with open(inputFile, 'r') as file:
+            data = file.read()
+        self.loadXML(data)
+
+
+    def printDNA(self):
+        print("Key: ", self.getKey())
+        print("Length: ", self.getLength())
+        print("Start: ", self.getStart())
+        for probe in self.__probes:
+            print("Pattern: ", probe.getPattern())
+            for cell in probe.getCells():
+                print("PosL: ", cell.getPosL(), " PosH: ", cell.getPosH(), " Sequence: ", cell.getSequence())
+
 
 
 def getInputFromWeb(n=500, k=10, mode="basic", intensity=0, position=1, sqpe=100, sqne=0, pose=100):
