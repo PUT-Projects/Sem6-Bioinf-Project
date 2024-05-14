@@ -14,9 +14,10 @@ import requests
 
 class Cell:
     def __init__(self, posL, posH, sequence):
-        self.__posL = posL
-        self.__posH = posH
+        self.__posL = int(posL)
+        self.__posH = int(posH)
         self.__sequence = sequence
+        self.__id = self.createId(hash(sequence), posL, posH)
 
     def __str__(self) -> str:
         return f"({self.__posL}, {self.__posH}, {self.__sequence})"
@@ -34,6 +35,20 @@ class Cell:
     def getSequence(self) -> str:
         return self.__sequence
 
+    def getId(self) -> int:
+        return self.__id
+
+    def createId(self, seq, posL, posH):
+        #hash function to create unique id
+        return hash(str(seq) + str(posL) + str(posH))
+
+    def setPosL(self, posL):
+        self.__posL = posL
+
+    def setPosH(self, posH):
+        self.__posH = posH
+
+
 
 # The `Probe` class has attributes for pattern and cells, with methods to retrieve the probe, pattern,
 # and cells.
@@ -48,6 +63,12 @@ class Probe:
 
     def getCells(self) -> list[Cell]:
         return self.__cells
+
+    def getCellById(self, id) -> Cell:
+        for cell in self.__cells:
+            if cell.getId() == id:
+                return cell
+        return None
 
 class DNA:
     def __init__(self, key=None, length=None, start=None, probes=None):
@@ -92,7 +113,7 @@ class DNA:
         return self.__key
 
     def getLength(self) -> int:
-        return self.__length
+        return int(self.__length)
 
     def getStart(self) -> str:
         return self.__start
@@ -103,11 +124,13 @@ class DNA:
     def getProbe(self, index) -> Probe:
         return self.__probes[index]
 
-    def loadFile(self, inputFile) -> None:
+    def loadFile(self, inputFile):
     #load xml file as string
         with open(inputFile, 'r') as file:
             data = file.read()
         self.loadXML(data)
+
+        return self
 
 
     def printDNA(self) -> None:
