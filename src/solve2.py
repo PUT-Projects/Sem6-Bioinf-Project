@@ -217,11 +217,6 @@ def main() -> None:
     graph.getSequence(path)
 
 
-    end = time.time()
-    print("End")
-    print("Time:", end-start)   
-
-
 if __name__ == '__main__':
 
     main()
