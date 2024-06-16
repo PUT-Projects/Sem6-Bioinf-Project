@@ -59,7 +59,7 @@ def runExact(n,k,sqpep,posep):
 
 def writeToFile(filename, param, time, correct):
     mstime = round(time*1000, 2)
-    with open(filename, 'a') as file:
+    with open('output/' + filename, 'a') as file:
         file.write(str(param) + " " + str(mstime) + " " + str(correct) + "\n")
 
 

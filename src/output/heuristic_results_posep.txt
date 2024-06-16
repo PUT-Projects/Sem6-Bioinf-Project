@@ -1,0 +1,8 @@
+5 10.7 True
+10 10.51 True
+15 9.52 True
+20 10.03 True
+25 10.5 True
+30 10.02 True
+40 11.54 True
+50 11.53 True

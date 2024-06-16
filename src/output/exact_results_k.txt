@@ -1,0 +1,7 @@
+4 130.48 True
+5 52.68 True
+6 17.55 True
+7 8.51 True
+8 4.58 True
+9 6.49 True
+10 3.0 True
