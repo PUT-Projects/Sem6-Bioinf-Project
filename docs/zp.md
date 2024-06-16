@@ -141,65 +141,127 @@ $sqpep$ - Liczba błędów pozytywnych procentowo, wartość ≤ $25\%$
 
 $posep$ - Szerokość przedziału ufności dla informacji o położeniu, dla starego trybu (position=='old') liczba błędów w informacji o położeniach, wartość ≤ 50%
 
+Jeżeli nie zostało napisane inaczej używane są wartości domyślne:
+
+Dla algorytmu dokładnego:
+$$ n = 25, k = 8, sqpep = 10\%, posep = 10\% $$
+
+Dla algorytmu przybliżonego:
+$$ n = 100,  k = 8, sqpep = 10\%, posep = 10\% $$
+
 ### Dla zmiennej n
 
-$$ k = 6, sqpep = 10\%, posep = 10\% $$
+#### Algorytm Dokładny
 
-| n    | Dokładny             | Przybliżony            |
-| ---- | -------------------- | ---------------------- |
-| 20   | 0.0239961s           | 0.005000114440917969 s |
-| 25   | 0.09800052642822266s | 0.0059967041015625 s   |
-| 30   | 3.79111s             | 0.026000 s             |
-| 40   | -                    | 0.0100 s               |
-| 50   | -                    | 0.11 s                 |
-| 100  | -                    | 0.11 s                 |
-| 500  | -                    | 0.11 s                 |
-| 1000 | -                    | 1.3 s                  |
-| 2000 | -                    | 1.3 s                  |
-| 5000 | -                    | 1.3 s                  |
+| n   | czas [ms] | optimum |
+| --- | --------- | ------- |
+| 20  | 0.0       | True    |
+| 25  | 5.5       | True    |
+| 30  | 74.53     | True    |
+| 35  | 1723.9    | True    |
+
+
+#### Algorytm Przybliżony
+
+| n   | czas [ms] | optimum |
+| --- | --------- | ------- |
+| 25  | 1.01      | True    |
+| 20  | 1.01      | True    |
+| 30  | 1.0       | True    |
+| 40  | 1.0       | True    |
+| 50  | 2.02      | True    |
+| 100 | 10.98     | True    |
+| 500 | 301.29    | True    |
+
+
 
 ### Dla zmiennej k
 
-$$ n = 25, sqpep = 5, posep = 5 $$
 
+#### Algorytm Dokładny
+
+
+| k   | czas [ms] | optimum |
+| --- | --------- | ------- |
+| 4   | 95.7      | True    |
+| 5   | 29.54     | True    |
+| 6   | 17.76     | True    |
+| 7   | 12.51     | True    |
+| 8   | 5.45      | True    |
+| 9   | 3.0       | True    |
+| 10  | 2.01      | True    |
+
+
+#### Algorytm Przybliżony
+
+| k   | czas [ms] | optimum |
+| --- | --------- | ------- |
+| 6   | 7.99      | True    |
+| 7   | 10.0      | True    |
+| 8   | 10.0      | True    |
+| 9   | 11.0      | True    |
+| 10  | 11.0      | True    |
 
 ### Dla zmiennej sqpep
 
-$$ n = 25, k = 6, posep = 5 $$
 
-| sqpep [%] | Dokładny             | Przybliżony          |
-| --------- | -------------------- | -------------------- |
-| 5         | 0.09800052642822266s | 0.0059967041015625 s |
-| 10        | 0.09800052642822266s | 0.0059967041015625 s |
-| 15        | 0.09800052642822266s | 0.0059967041015625 s |
-| 20        | 0.09800052642822266s | 0.0059967041015625 s |
-| 25        | 0.09800052642822266s | 0.0059967041015625 s |
+#### Algorytm Dokładny
+
+| sqpep [%] | time [ms] | optimum |
+| --------- | --------- | ------- |
+| 5         | 6.54      | True    |
+| 10        | 3.0       | True    |
+| 15        | 3.96      | True    |
+| 20        | 5.03      | True    |
+| 25        | 5.0       | True    |
+
+
+#### Algorytm Przybliżony
+
+| sqpep [%] | time [ms] | optimum |
+| --------- | --------- | ------- |
+| 5         | 10.0      | True    |
+| 10        | 10.49     | True    |
+| 15        | 10.97     | True    |
+| 20        | 12.61     | True    |
+| 25        | 12.91     | True    |
+
 
 ### Dla zmiennej posep
 
-$$ n = 25, k = 6, sqpep = 5 $$
+#### Algorytm Dokładny
 
-| posep [%] | Dokładny             | Przybliżony          |
-| --------- | -------------------- | -------------------- |
-| 5         | 0.09800052642822266s | 0.0059967041015625 s |
-| 10        | 0.09800052642822266s | 0.0059967041015625 s |
-| 15        | 0.09800052642822266s | 0.0059967041015625 s |
-| 20        | 0.09800052642822266s | 0.0059967041015625 s |
-| 25        | 0.09800052642822266s | 0.0059967041015625 s |
-| 30        | 0.09800052642822266s | 0.0059967041015625 s |
-| 40        | 0.09800052642822266s | 0.0059967041015625 s |
-| 50        | 0.09800052642822266s | 0.0059967041015625 s |
-###
-
-| n    | k   | sqpe | pose | Dokładny             | Przybliżony            |
-| ---- | --- | ---- | ---- | -------------------- | ---------------------- |
-| 20   | 5   | 4    | 4    | 0.0239961s           | 0.005000114440917969 s |
-| 25   | 6   | 5    | 5    | 0.09800052642822266s | 0.0059967041015625 s   |
-| 30   | 6   | 5    | 5    | 3.79111s             | 0.026000 s             |
-| 40   | 6   | 5    | 5    | -                    | 0.0100 s               |
-| 50   | 8   | 5    | 5    | -                    | 0.11 s                 |
-| 100  | 8   | 5    | 5    |
-| 1000 | 10  | 5    | 5    | -                    | 1.3 s                  |
+| posep [%] | time [ms] | optimum |
+| --------- | --------- | ------- |
+| 5         | 0.0       | True    |
+| 10        | 5.89      | True    |
+| 15        | 4.51      | True    |
+| 20        | 10.18     | True    |
+| 25        | 15.6      | True    |
+| 30        | 19.59     | True    |
+| 40        | 33.6      | True    |
+| 50        | 63.36     | True    |
 
 
 
+
+#### Algorytm Przybliżony
+
+| posep [%] | time [ms] | optimum |
+| --------- | --------- | ------- |
+| 5         | 9.61      | True    |
+| 10        | 10.0      | True    |
+| 15        | 11.0      | True    |
+| 20        | 11.0      | True    |
+| 25        | 10.0      | True    |
+| 30        | 11.0      | True    |
+| 40        | 11.0      | True    |
+| 50        | 12.03     | True    |
+
+
+
+## Wnioski
+
+Algorytm dokładny jest w stanie znaleźć optymalną ścieżkę między segmentami DNA, ale jest znacznie wolniejszy niż algorytm przybliżony. Algorytm przybliżony, mimo że nie gwarantuje optymalnego rozwiązania, jest w stanie znaleźć satysfakcjonujące rozwiązanie w krótszym czasie. Dla większych danych wejściowych zaleca się użycie algorytmu przybliżonego ze względu na krótszy czas wykonania.
+
+Co ciekawe algorytm przybliżony wykonuje się szybciej dla większego k niż dla mniejszego k. Dla algorytmu dokładnego jest odwrotnie, im większe k tym dłuższy czas wykonania.

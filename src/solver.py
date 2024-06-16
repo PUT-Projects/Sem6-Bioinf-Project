@@ -171,12 +171,12 @@ class Graph:
         string = ""
         cost = 0
         for i in range(len(path) - 1):
-            print(" " * cost, self.__data[path[i]].getSequence())
+            #print(" " * cost, self.__data[path[i]].getSequence())
             count = self.costAt(path[i+1], path[i])
             cost += count
             string += self.__data[path[i]].getSequence()[:count]
 
-        print(" " * cost, self.__data[path[-1]].getSequence())
+        #print(" " * cost, self.__data[path[-1]].getSequence())
 
         string += self.__data[path[-1]].getSequence()
 

@@ -144,8 +144,11 @@ class DNA:
 
 
 
-def getInputFromWeb(n=500, k=10, mode="basic", intensity=0, position=1, sqpe=100, sqne=0, pose=100):
-    url = "https://www.cs.put.poznan.pl/pwawrzyniak/bio/bio.php?n=" + str(n) + "&k=" + str(k) + "&mode=" + mode + "&intensity=" + str(intensity) + "&position=" + str(position) + "&sqpe=" + str(sqpe) + "&sqne=" + str(sqne) + "&pose=" + str(pose)
+def getInputFromWeb(n=500, k=10, mode="basic", intensity=0, position=1, sqpe=100, pose=100, sqpep=None, posep=None):
+    if sqpep is not None and posep is not None:
+        url = "https://www.cs.put.poznan.pl/pwawrzyniak/bio/bio.php?n=" + str(n) + "&k=" + str(k) + "&mode=" + mode + "&intensity=" + str(intensity) + "&position=" + str(position) + "&sqpep=" + str(sqpep) + "&posep=" + str(posep) + "&sqne=0"
+    else:
+        url = "https://www.cs.put.poznan.pl/pwawrzyniak/bio/bio.php?n=" + str(n) + "&k=" + str(k) + "&mode=" + mode + "&intensity=" + str(intensity) + "&position=" + str(position) + "&sqpe=" + str(sqpe) + "&pose=" + str(pose) + "&sqne=0"
     ## get the data from the website and save to string
     xml = requests.get(url).text
     return xml
