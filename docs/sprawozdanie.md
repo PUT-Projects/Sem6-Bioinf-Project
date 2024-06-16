@@ -1,34 +1,9 @@
 # Position SBH Err+ - Sekwencjonowanie z informacją o położeniu, z błędami pozytywnymi
 Mateusz Chlebosz 151817, Jakub Aszyk 151841
 
-## 1. Wstęp
+## 1. Opis problemu
+
 Celem laboratorium jest zaimplementowanie algorytmu pozwalającego na sekwencjonowanie z informacją o położeniu, z błędami pozytywnymi. W ramach laboratorium zaimplementowano algorytm Position SBH Err+.
-
-
-1. Sortujemy po PosL i PosH
-2. Hashmapa inkrementalna
-3.
-
-Zysk = Ilość odwiedzonych wierzchołków
-Wierzchołek = zysk + 1
-
-<!-- Zysk łuku – zależny od odległości pomiędzy wierzchołkami????? -->
-
-Łuki łączą się tylko jeżeli ich pozycje są blisko siebie $h_i+1 ≥ l_{i+1}$
-
-np. PosL=1 PosH=10 może się połączyć z -> PosL=11 PosH=20
-ale nie z PosL=15 PosH=25
-
-Koszt = (Łuk) różnica w dodatkowych Zasadach azotowych nukleotydów np ACTG -> TGCA koszt = 2
-Koszt <= Długości sekwencji dna
-
-Max (Zysk)
-
-
-
-## Prezka
-
-### Wstęp
 
 Sekwencjonowanie to proces określania sekwencji nukleotydów w DNA. Jest to proces określenia kolejności nukleotydów w DNA. Sekwencjonowanie DNA jest kluczowym narzędziem w dziedzinie biologii molekularnej, pozwala na zrozumienie struktury genów, ich funkcji oraz ewolucji.
 
@@ -39,6 +14,7 @@ Hybrydyzacja to proces łączenia dwóch nici DNA, które są komplementarne do 
 PSBH (Position SBH) to technika sekwencjonowania DNA, która dodatkowo zawiera informację o położeniu sond DNA na DNA, które chcemy sekwencjonować.
 
 Oligonukleotydy to krótkie sondy DNA, które są używane w technikach sekwencjonowania DNA. Oligonukleotydy są używane do hybrydyzacji z DNA, które chcemy sekwencjonować.
+
 
 ### Problem sekwencjonowania z informacją o położeniu
 
@@ -51,6 +27,9 @@ Jak to wygląda, fragment danych wejściowych, rekonstrukcja kolejności
 ### Błędy pozytywne
 
 Błędy pozytywne to sytuacja, w której w wyniku sekwencjonowania otrzymujemy więcej informacji niż jest w rzeczywistości. W wyniku błędów pozytywnych otrzymujemy dodatkowe zasady azotowe nukleotydów. Błędy pozytywne mogą powstać w wyniku błędów pomiarowych. Musimy więc uwzględnić błędy pozytywne w naszym algorytmie. i założyć możliwość pominięcia oligonukleotydów.
+
+
+## 2. Opis algorytmu dokładnego
 
 ### Algorytm Position SBH Err+ - STS
 
@@ -79,6 +58,8 @@ Selected Traveling Salesman Comivoyeur
 
 #### Przyblizona
 
-Coś
+Algorytm Zachłanny
 
 ### Podsumowanie
+Analizę uzyskanych wyników
+

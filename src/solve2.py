@@ -3,6 +3,7 @@ import dnaParser
 import offset
 import dnaParser
 from dnaParser import Cell
+import time
 
 
 
@@ -214,6 +215,11 @@ def main() -> None:
     print("Path: ", path, ", Cost: ", cost)
 
     graph.getSequence(path)
+
+
+    end = time.time()
+    print("End")
+    print("Time:", end-start)   
 
 
 if __name__ == '__main__':

@@ -150,6 +150,12 @@ def getInputFromWeb(n=500, k=10, mode="basic", intensity=0, position=1, sqpe=100
     xml = requests.get(url).text
     return xml
 
+def getInputFromFile(filename):
+    with open(filename, 'r') as file:
+        data = file.read()
+    return data
+
+
 
 if __name__ == "__main__":
     inputFile = "input.xml"
